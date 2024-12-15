@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Omat viestit</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Keskustelufoorumi</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Etusivu</a></li>
+      <li><a href="/newpost">Uusi viesti</a></li>
+      <li><a href="/mymessages">Omat viestit</a></li>
+      <li><a href="/search">Haku</a></li>
+    </ul>
+
+    {% if session.user_id %}
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Kirjaudu ulos</a></li>
+      </ul>
+    {% else %}
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Luo tili</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Kirjaudu sisään</a></li>
+      </ul>
+    {% endif %}
+  </div>
+</nav>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="viestit">
+          <br>   
+            <hr>
+            {% for message in messages %}
+            <h3>{{ message[0] }}</h3> 
+            <p></p>
+            <p class="message">{{ message[1] }}</p> 
+            <p>
+            <i> Lähettäjä: {{ message[2] }}</i>
+            <br>
+            <i> Lähetysaika: {{ message[3].strftime("%Y-%m-%d %H:%M:%S") }}</i>
+            <hr>
+            {% endfor %}
+      </div>
+
+  <div class="footer">
+    <p>Tsoha-harjoitustyö</p>
+     </div>
+        
+</body>
+</html>
