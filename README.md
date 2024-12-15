@@ -1,3 +1,18 @@
+Käyttöohje:
+
+Kloonaa tämä repositorio omalle koneellesi ja siirry sen juurikansioon. Luo kansioon .env-tiedosto ja määritä sen sisältö seuraavanlaiseksi:
+
+DATABASE_URL=<tietokannan-paikallinen-osoite>
+SECRET_KEY=<salainen-avain>
+
+Määritä vielä tietokannan skeema komennolla
+
+$ psql < schema.sql
+
+Nyt voit käynnistää sovelluksen komennolla
+
+$ flask run
+
 Tämän työn aiheenna on keskustelufoorumisovellus, jossa käyttäjä voi lähettää ja lukea viestejä, nähdä listan omista viesteistään, luoda käyttäjätilin ja hakea viestejä otsikossa tai viestissä olevan sanan perusteella. 
 
 Etusivulla on lista kaikista viesteistä lähetysajan mukaan järjestettynä ja omat viestit -sivulla on lista käyttäjän viesteistä. 
